@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.emailsample.bean.Attachment;
 import com.example.emailsample.bean.EmailBean;
 import com.example.emailsample.bean.MessageBean;
+import com.orhanobut.logger.Logger;
 
 import org.litepal.LitePal;
 
@@ -182,9 +183,11 @@ public class EditModel implements IEditModel {
 
         EmailBean email = getEmail();
 
+        // com.sun.mail.smtp.SMTPAddressFailedException: 501 Bad address syntax
         Properties props = new Properties();
         props.put("mail.transport.protocol", "smtp");     //协议
         props.put("mail.smtp.host", email.getSmtpHost()); // smtp 服务器地址
+        Logger.d("EmailModel测试 ------>smtp服务器地址: " + email.getSmtpHost());
         //props.put("mail.smtp.port", 465);             // smtp 服务器端口
         props.put("mail.smtp.auth", true);            // 服务器需要认证
         props.put("mail.smtp.ssl.enable", true);      // 使用 SSL 套接层
@@ -223,8 +226,10 @@ public class EditModel implements IEditModel {
                 message.setContent(multipart);
             }
             message.saveChanges();
+
             Transport transport = session.getTransport();
             transport.connect(email.getAddress(), email.getPassword());
+            Logger.d("EmailModel测试 :" + email.getAddress() + "<---->" + email.getPassword());
             transport.addTransportListener(new TransportListener() {
                 @Override
                 public void messageDelivered(TransportEvent e) {

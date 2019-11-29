@@ -42,7 +42,6 @@ public class EditPresenter implements IEditPresenter {
             @Override
             public void run() {
                 // 发送邮件
-                // com.sun.mail.smtp.SMTPAddressFailedException: 501 Bad address syntax
                 iEditModel.sendMessage(recipient, cc, bcc, subject, content, iEditView.getEditMessageId());
             }
         }).start();

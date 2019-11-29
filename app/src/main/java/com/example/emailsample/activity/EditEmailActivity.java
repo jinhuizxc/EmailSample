@@ -300,6 +300,7 @@ public class EditEmailActivity extends BaseActivity implements IEditView {
                 clearText(bccEdit);
                 break;
             case R.id.send_edit:
+                // 发送邮件
                 editPresenter.sendMessage(getText(recipientEdit), getText(ccEdit),
                         getText(bccEdit), getText(subjectEdit), getText(contentEdit));
                 break;

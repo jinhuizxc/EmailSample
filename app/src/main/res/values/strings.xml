@@ -69,8 +69,8 @@
     <string name="new_email">新邮件</string>
     <string name="recipient">收件人</string>
     <string name="CC_BCC">抄送/密送</string>
-    <string name="CC">抄送</string>
-    <string name="BCC">密送</string>
+    <string name="CC">抄送人</string>
+    <string name="BCC">密送人</string>
     <string name="subject">主题</string>
 
     <string name="select_attachment">选择附件</string>
