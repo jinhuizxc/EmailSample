@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/gray</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AddAccountTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/gray</item>
+    </style>
+
+    <style name="bottom_menu_anim_style">
+        <item name="android:windowEnterAnimation">@anim/bottom_menu_in</item>
+        <item name="android:windowExitAnimation">@anim/bottom_menu_out</item>
+    </style>
+
+</resources>

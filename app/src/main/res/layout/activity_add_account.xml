@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="@string/add_account"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/Select_the_type_of_mailbox"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/QQ_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/mailbox_QQ"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:drawableStart="@drawable/mail_qq"
+            android:drawableLeft="@drawable/mail_qq"
+            android:drawablePadding="20dp"
+            android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+            android:drawableRight="@drawable/ic_chevron_right_black_24dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E4E4E4"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="15dp"/>
+
+        <TextView
+            android:id="@+id/text_163"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/mailbox_163"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:drawableStart="@drawable/mail_163"
+            android:drawableLeft="@drawable/mail_163"
+            android:drawablePadding="20dp"
+            android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+            android:drawableRight="@drawable/ic_chevron_right_black_24dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E4E4E4"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="15dp"/>
+
+       <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/mailbox_126"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:drawableStart="@drawable/mail_126"
+            android:drawableLeft="@drawable/mail_126"
+            android:drawablePadding="20dp"
+            android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+            android:drawableRight="@drawable/ic_chevron_right_black_24dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E4E4E4"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="15dp"/>
+
+        <!--<TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="15dp"
+           android:gravity="center_vertical"
+           android:text="@string/Exchange"
+           android:textSize="15sp"
+           android:textColor="@color/black"
+           android:textStyle="bold"
+           android:drawableStart="@drawable/mail_exchange"
+           android:drawableLeft="@drawable/mail_exchange"
+           android:drawablePadding="20dp"
+           android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+           android:drawableRight="@drawable/ic_chevron_right_black_24dp" />
+
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#E4E4E4"
+           android:layout_marginStart="65dp"
+           android:layout_marginEnd="15dp"
+           android:layout_marginLeft="65dp"
+           android:layout_marginRight="15dp"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="15dp"
+           android:gravity="center_vertical"
+           android:text="@string/Gmail"
+           android:textSize="15sp"
+           android:textColor="@color/black"
+           android:textStyle="bold"
+           android:drawableStart="@drawable/mail_gmail"
+           android:drawableLeft="@drawable/mail_gmail"
+           android:drawablePadding="20dp"
+           android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+           android:drawableRight="@drawable/ic_chevron_right_black_24dp" />
+
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#E4E4E4"
+           android:layout_marginStart="65dp"
+           android:layout_marginEnd="15dp"
+           android:layout_marginLeft="65dp"
+           android:layout_marginRight="15dp"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="15dp"
+           android:gravity="center_vertical"
+           android:text="@string/Outlook"
+           android:textSize="15sp"
+           android:textColor="@color/black"
+           android:textStyle="bold"
+           android:drawableStart="@drawable/mail_outlook"
+           android:drawableLeft="@drawable/mail_outlook"
+           android:drawablePadding="20dp"
+           android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+           android:drawableRight="@drawable/ic_chevron_right_black_24dp" />
+
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#E4E4E4"
+           android:layout_marginStart="65dp"
+           android:layout_marginEnd="15dp"
+           android:layout_marginLeft="65dp"
+           android:layout_marginRight="15dp"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="15dp"
+           android:gravity="center_vertical"
+           android:text="@string/other_mailbox"
+           android:textSize="15sp"
+           android:textColor="@color/black"
+           android:textStyle="bold"
+           android:drawableStart="@drawable/mail_other"
+           android:drawableLeft="@drawable/mail_other"
+           android:drawablePadding="20dp"
+           android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+           android:drawableRight="@drawable/ic_chevron_right_black_24dp" />-->
+
+    </LinearLayout>
+
+</LinearLayout>

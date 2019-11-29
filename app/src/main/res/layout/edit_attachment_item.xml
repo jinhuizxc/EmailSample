@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+    <ImageView
+        android:id="@+id/type_edit"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/mz_ic_list_pdf_big"
+        android:scaleType="fitXY"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/filename_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:text="视屏营养与健康论文题目.pdf"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/fileSize_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:gravity="center_vertical"
+            android:text="298KB" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/delete_item_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/mz_btn_list_attachment_delete_normal"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        tools:ignore="ContentDescription" />
+
+</LinearLayout>
