@@ -5,6 +5,11 @@ import org.litepal.crud.LitePalSupport;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+/**
+ * 保存的用户信息: EmailBean(id=1, address=1004260403@qq.com,
+ * password=jgvlwtwlnovfbfhb, protocol=imap,
+ * logo=qq, host=imap.qq.com, smtpHost=smtp.qq.com)
+ */
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class EmailBean extends LitePalSupport {

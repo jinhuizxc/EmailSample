@@ -30,35 +30,35 @@ public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.Vi
     private Context context;
     private List<Attachment> list;
 
-    public AttachmentAdapter(List<Attachment> attachments){
+    public AttachmentAdapter(List<Attachment> attachments) {
         list = attachments;
     }
 
     @NonNull
     @Override
     public AttachmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (context == null){
+        if (context == null) {
             context = parent.getContext();
         }
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.attachment_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.attachment_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
         holder.download_open.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final int position = holder.getAdapterPosition();
                 final Attachment attachment = list.get(position);
-                if (attachment.getIsDownload()){          //下载就打开文件
+                if (attachment.getIsDownload()) {          //下载就打开文件
                     Intent intent = new Intent();
                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.setAction(Intent.ACTION_VIEW);
 
-                    File file = new File(context.getFilesDir(),attachment.getFileName());
+                    File file = new File(context.getFilesDir(), attachment.getFileName());
                     Uri fileUri = FileProvider.getUriForFile(context, "com.example.email.fileprovider", file);
                     String mimeType = context.getContentResolver().getType(fileUri);
-                    intent.setDataAndType(fileUri,mimeType);
-                    context.startActivity(Intent.createChooser(intent,"选择打开方式"));
-                }else {                                //没下载，就开始下载
+                    intent.setDataAndType(fileUri, mimeType);
+                    context.startActivity(Intent.createChooser(intent, "选择打开方式"));
+                } else {                                //没下载，就开始下载
                     holder.download_open.setVisibility(View.GONE);
                     holder.progressBar.setVisibility(View.VISIBLE);
 
@@ -75,20 +75,20 @@ public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.Vi
                             notifyItemChanged(position);
                             holder.progressBar.setVisibility(View.GONE);
                             holder.download_open.setVisibility(View.VISIBLE);
-                            Toast.makeText(context,"下载成功",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "下载成功", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailed() {
                             holder.progressBar.setVisibility(View.GONE);
                             holder.download_open.setVisibility(View.VISIBLE);
-                            Toast.makeText(context,"下载失败",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "下载失败", Toast.LENGTH_SHORT).show();
                         }
                     };
 
                     DownloadTask downloadTask = new DownloadTask(downloadListener);
-                    downloadTask.execute(String.valueOf(attachment.getEmailId()),String.valueOf(attachment.getMessageId()),
-                            context.getFilesDir().getPath(),attachment.getFileName(),String.valueOf(attachment.getSize()));
+                    downloadTask.execute(String.valueOf(attachment.getEmailId()), String.valueOf(attachment.getMessageId()),
+                            context.getFilesDir().getPath(), attachment.getFileName(), String.valueOf(attachment.getSize()));
                 }
             }
         });
@@ -98,58 +98,63 @@ public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Attachment attachment = list.get(position);
-        switch (attachment.getFileType()) {
-            case "image":
-                holder.type.setImageResource(R.drawable.mz_ic_list_photo_big);
-                break;
-            case "audio":
-                holder.type.setImageResource(R.drawable.mz_ic_list_music_big);
-                break;
-            case "video":
-                holder.type.setImageResource(R.drawable.mz_ic_list_movie_big);
-                break;
-            case "pdf":
-                holder.type.setImageResource(R.drawable.mz_ic_list_pdf_big);
-                break;
-            case "xls":
-                holder.type.setImageResource(R.drawable.mz_ic_list_xls_big);
-                break;
-            case "doc":
-                holder.type.setImageResource(R.drawable.mz_ic_list_doc_big);
-                break;
-            case "txt":
-                holder.type.setImageResource(R.drawable.mz_ic_list_txt_big);
-                break;
-            case "zip":
-                holder.type.setImageResource(R.drawable.mz_ic_list_zip_big);
-                break;
-            case "rar":
-                holder.type.setImageResource(R.drawable.mz_ic_list_zip_big);
-                break;
-            case "application":
-                holder.type.setImageResource(R.drawable.mz_ic_list_app_big);
-                break;
-            default:
-                holder.type.setImageResource(R.drawable.mz_ic_list_unknow_big);
-                break;
+        if (attachment != null) {
+            if (attachment.getFileType() != null){
+                switch (attachment.getFileType()) {
+                    case "image":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_photo_big);
+                        break;
+                    case "audio":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_music_big);
+                        break;
+                    case "video":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_movie_big);
+                        break;
+                    case "pdf":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_pdf_big);
+                        break;
+                    case "xls":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_xls_big);
+                        break;
+                    case "doc":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_doc_big);
+                        break;
+                    case "txt":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_txt_big);
+                        break;
+                    case "zip":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_zip_big);
+                        break;
+                    case "rar":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_zip_big);
+                        break;
+                    case "application":
+                        holder.type.setImageResource(R.drawable.mz_ic_list_app_big);
+                        break;
+                    default:
+                        holder.type.setImageResource(R.drawable.mz_ic_list_unknow_big);
+                        break;
+                }
+            }
+
         }
         holder.name.setText(attachment.getFileName());
-        String s = attachment.getFileFormat()+" "+attachment.getFileSize();
+        String s = attachment.getFileFormat() + " " + attachment.getFileSize();
         holder.format_size.setText(s);
-        if (attachment.getIsDownload()){
+        if (attachment.getIsDownload()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 holder.download_open.setBackground(context.getResources().getDrawable(R.drawable.open));
                 holder.download_open.setText(R.string.open);
                 holder.download_open.setTextColor(context.getResources().getColor(R.color.colorAccent));
-            }else {
+            } else {
                 holder.download_open.setText(R.string.open);
             }
-        }else {
+        } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 holder.download_open.setBackground(context.getResources().getDrawable(R.drawable.download));
                 holder.download_open.setText(R.string.download);
                 holder.download_open.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }else {
+            } else {
                 holder.download_open.setText(R.string.download);
             }
         }
@@ -179,9 +184,9 @@ public class AttachmentAdapter extends RecyclerView.Adapter<AttachmentAdapter.Vi
         }
     }
 
-    private int getEmailId(){
+    private int getEmailId() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return sharedPreferences.getInt("email_id",0);
+        return sharedPreferences.getInt("email_id", 0);
     }
 
 }

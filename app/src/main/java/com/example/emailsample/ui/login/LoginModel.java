@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.example.emailsample.bean.EmailBean;
+import com.orhanobut.logger.Logger;
 
 import org.litepal.LitePal;
 
@@ -39,7 +40,7 @@ public class LoginModel implements ILoginModel {
         }
     };*/
 
-    LoginModel(ILoginPresenter iLoginPresenter){
+    LoginModel(ILoginPresenter iLoginPresenter) {
         this.iLoginPresenter = iLoginPresenter;
     }
 
@@ -56,27 +57,30 @@ public class LoginModel implements ILoginModel {
                       final String smtpHost, final Activity activity) {
 
         Properties properties = new Properties();
-        if (protocol.equals("imap")){
+        if (protocol.equals("imap")) {
             properties.put("mail.store.protocol", protocol);
             properties.put("mail.imap.host", host);
             properties.put("mail.imap.ssl.enable", true);
-        }else if (protocol.equals("pop3")){
+        } else if (protocol.equals("pop3")) {
             properties.put("mail.store.protocol", protocol);
             properties.put("mail.pop3.host", host);
             properties.put("mail.pop3.ssl.enable", true);
         }
-        //properties.put("mail.imap.connectiontimeout", 1000);
 
+        //properties.put("mail.imap.connectiontimeout", 1000);
         Session session = Session.getInstance(properties);
         session.setDebug(true);
         try {
             ToastUtils.showShort("host: " + host + " protocol: " + protocol);
-            final Store store= session.getStore(protocol);
+            final Store store = session.getStore(protocol);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
+
+                        // 连接账号密码:
                         store.connect(address, password);
+
                         EmailBean emailBean = new EmailBean();
                         emailBean.setAddress(address);
                         emailBean.setPassword(password);
@@ -85,10 +89,11 @@ public class LoginModel implements ILoginModel {
                         emailBean.setHost(host);
                         emailBean.setSmtpHost(smtpHost);
                         emailBean.save();
+                        Logger.d("保存的用户信息: " + emailBean.toString());
                         iLoginPresenter.loginSuccess(emailBean.getId());
                         store.close();
 
-                        if (!getLoginStatus(activity)){
+                        if (!getLoginStatus(activity)) {
                             setLoginStatus(true);
                         }
                         isFirstEmail(emailBean.getId());
@@ -112,36 +117,36 @@ public class LoginModel implements ILoginModel {
 
     }
 
-    private boolean getLoginStatus(Activity activity){
+    private boolean getLoginStatus(Activity activity) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
-        return sharedPreferences.getBoolean("isLogin",false);
+        return sharedPreferences.getBoolean("isLogin", false);
     }
 
     private void setLoginStatus(boolean bool) {
         editor = sharedPreferences.edit();
-        editor.putBoolean("isLogin",bool);
+        editor.putBoolean("isLogin", bool);
         editor.apply();
     }
 
-    private void isFirstEmail(int emailId){
+    private void isFirstEmail(int emailId) {
         EmailBean emailBean = LitePal.findFirst(EmailBean.class);
-        if (emailBean.getId() == emailId){
+        if (emailBean.getId() == emailId) {
             setDefaultEmailId(emailId);
             setEmailId(emailId);
-        }else {
+        } else {
             setEmailId(emailId);
         }
     }
 
-    private void setDefaultEmailId(int emailId){
+    private void setDefaultEmailId(int emailId) {
         editor = sharedPreferences.edit();
-        editor.putInt("default_id",emailId);
+        editor.putInt("default_id", emailId);
         editor.apply();
     }
 
-    private void setEmailId(int emailId){
+    private void setEmailId(int emailId) {
         editor = sharedPreferences.edit();
-        editor.putInt("email_id",emailId);
+        editor.putInt("email_id", emailId);
         editor.apply();
     }
 

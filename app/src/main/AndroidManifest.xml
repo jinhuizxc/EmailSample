@@ -44,6 +44,9 @@
         <activity android:name=".activity.DisplayEmailActivity" />
         <activity android:name=".activity.EditEmailActivity" />
 
+        <activity android:name=".activity.EditAccountActivity"/>
+
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.emailsample.fileprovider"

@@ -1,4 +1,4 @@
-package com.example.emailsample.ui.main;
+package com.example.emailsample.adapter;
 
 import android.app.Activity;
 import android.content.Context;

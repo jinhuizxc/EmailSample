@@ -13,6 +13,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 添加账号
+ */
 public class AddAccountActivity extends BaseActivity {
 
     @BindView(R.id.QQ_text)

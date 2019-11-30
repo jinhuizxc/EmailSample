@@ -210,7 +210,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/sent"
+                android:id="@+id/ll_send"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/background_color"
